@@ -1,6 +1,6 @@
-const jwt = require("jsonwebtoken");
+import jwt from 'jsonwebtoken';
 
-exports.tokenCheck = function (req, res, next) {
+export function bearerTokenCheck(req, res, next) {
   let token = req.header('Authorization');
   if (!token) return res.status(401).send("Access Denied");
   
@@ -22,4 +22,8 @@ exports.tokenCheck = function (req, res, next) {
   catch (err) {
     res.status(400).send("Invalid Token");
   }
+}
+
+export function firebaseTokenCheck() {
+
 }
